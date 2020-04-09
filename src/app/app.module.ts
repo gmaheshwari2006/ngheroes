@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartService } from './cartService/cart.service';
 import { ShippingComponent } from './shipping/shipping.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FavModuleModule } from './fav-module/fav-module.module';
+import { EusersModule } from './eusers/eusers.module';
 
 
 @NgModule({
@@ -28,9 +29,11 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
       { path: 'cart', component: CartComponent },
       { path: 'shipping', component: ShippingComponent },
     ]),
-    FormsModule,
-    ReactiveFormsModule
+    
+    FavModuleModule,
+    EusersModule
   ],
+  exports:[],
   declarations: [
     AppComponent,
     TopBarComponent,
@@ -39,11 +42,10 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductDetailsComponent,
     CartComponent,
     ShippingComponent
-
   ],
  providers: [
   CartService,
-  FormBuilder,
+  
  ],
   bootstrap: [AppComponent]
 })
