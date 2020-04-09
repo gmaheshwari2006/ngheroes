@@ -3,5 +3,5 @@
 <div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
     wel
   <span>{{ shipping.type }}</span>
-  <span>{{ shipping.price}}</span>
+  <span>{{ shipping.price | currency}}</span>
 </div>
