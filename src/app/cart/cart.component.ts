@@ -10,8 +10,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class CartComponent implements OnInit {
  items;
  checkoutForm;
-  constructor(private cartService: CartService,
-    private formBuilder: FormBuilder) {
+  constructor(private cartService: CartService, private formBuilder: FormBuilder) {
       this.checkoutForm = this.formBuilder.group({
         name: '',
         address: ''
@@ -21,6 +20,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.items = this.cartService.getItems();
   }
+
 
   onSubmit(customerData) {
     // Process checkout data here

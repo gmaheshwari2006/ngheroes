@@ -1,11 +1,50 @@
-<h2>Users List</h2>
-<ul class="users">
-  <li *ngFor="let user of users"
-    [class.selected]="user === selectedUser"
-    (click)="onSelect(user)">
-    <span class="badge">{{user.id}}</span> {{user.name}}
-  </li>
-</ul>
+<table>
+  <tbody>
+    <td>
+      <tr>
+      <h2>Users List</h2>
+      <ul class="users">
+        
+        <!-- 
+          <li *ngFor="let user of users"
+          [class.selected]="user === selectedUser"
+          (click)="onSelect1(user.id)">
 
-<app-user-details [user]="selectedUser"></app-user-details>
+          <span class="badge">{{user.id}}</span> {{user.name}} -->
+           <li *ngFor="let user of users">
+          <a routerLink="/detail/{{user.id}}">
+            <span class="badge"> {{user.id}} </span>
+             {{user.name}}
+          </a> 
+
+          <button class="delete" title="delete user" (click)="delete(user)">x</button>
+        </li>
+      </ul>
+       <app-user-details [user]="selectedUser"></app-user-details> 
+       
+      
+
+    </tr>
+    </td>
+    <td><tr>
+      <app-user-search></app-user-search>
+    </tr>
+    </td>
+    <td>
+      <tr>
+      <div style="align-content: center; padding-top: 10px; margin-right: 100px; margin-top: 5px;">
+        <label>User name:
+          <input #userName />
+        </label>
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button (click)="add(userName.value); userName.value=''">
+          add
+        </button>
+      </div>
+    </tr>
+    </td>
+  </tbody>
+</table>
+
+
 

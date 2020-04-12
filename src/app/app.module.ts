@@ -16,13 +16,17 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FavModuleModule } from './fav-module/fav-module.module';
 import { EusersModule } from './eusers/eusers.module';
-
+import { MessagesComponent } from './messages/messages.component';
+import { MessagesService } from './messages/messages.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
@@ -31,7 +35,11 @@ import { EusersModule } from './eusers/eusers.module';
     ]),
     
     FavModuleModule,
-    EusersModule
+    EusersModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
+    
   ],
   exports:[],
   declarations: [
@@ -41,11 +49,13 @@ import { EusersModule } from './eusers/eusers.module';
     ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
-    ShippingComponent
+    ShippingComponent,
+    MessagesComponent
   ],
  providers: [
+  //FormBuilder,
   CartService,
-  
+  MessagesService
  ],
   bootstrap: [AppComponent]
 })
